@@ -1,20 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Login Page</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hacker Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Share Tech Mono', monospace;
+      height: 100%;
+      background: linear-gradient(135deg, #000000, #0f0f0f);
+      color: #00ffcc;
+      overflow: hidden;
+    }
+
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .login-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      padding: 40px;
+      background: rgba(0, 255, 204, 0.1);
+      border: 1px solid #00ffcc;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #00ffcc88;
+      backdrop-filter: blur(10px);
+    }
+
+    .login-box h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 28px;
+      text-shadow: 0 0 5px #00ffcc;
+    }
+
+    .login-box input[type="text"],
+    .login-box input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #00ffcc;
+      border-radius: 5px;
+      color: #00ffcc;
+      font-size: 16px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .login-box input[type="text"]:focus,
+    .login-box input[type="password"]:focus {
+      box-shadow: 0 0 10px #00ffcc;
+    }
+
+    .login-box input[type="submit"] {
+      background: #00ffcc;
+      color: black;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .login-box input[type="submit"]:hover {
+      background: #00ffaa;
+      box-shadow: 0 0 15px #00ffaa;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-  <div class="login-container">
-    <h2>Login</h2>
-    <form onsubmit="return validateLogin()">
-      <input type="text" id="username" placeholder="Username" required><br>
-      <input type="password" id="password" placeholder="Password" required><br>
-      <button type="submit">Login</button>
+
+  <!-- Particles Background -->
+  <div id="particles-js"></div>
+
+  <!-- Login Box -->
+  <div class="login-box">
+    <h2>H4ck3r L0g1n</h2>
+    <form onsubmit="showHackedMessage(event)">
+      <input type="text" placeholder="Username" required>
+      <input type="password" placeholder="Password" required>
+      <input type="submit" value="Enter">
     </form>
-    <p id="error-msg"></p>
   </div>
-  <script src="script.js"></script>
+
+  <!-- Background Music -->
+  <audio autoplay loop>
+    <source src="hacker_theme.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Particles JS -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 100 },
+        "color": { "value": "#00ffcc" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5 },
+        "size": { "value": 3 },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#00ffcc",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 2
+        }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "grab"
+          }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
+
+  <!-- Hacked Alert Script -->
+  <script>
+    function showHackedMessage(event) {
+      event.preventDefault(); // Stop the form from submitting
+      alert("⚠️ You Are HACKED! ☠️");
+    }
+  </script>
+
 </body>
 </html>
